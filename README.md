@@ -69,7 +69,7 @@ Copy
 Edit
 # Clone the repo
 [git clone https://github.com/yourusername/dental-xray-yolov8-esrgan.git](https://github.com/prajwalBirwadkar/Dental-X-ray-Anomaly-Detection-System.git)
-cd dental-xray-yolov8-esrgan
+
 
 # Install dependencies
 pip install -r requirements.txt
