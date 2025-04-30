@@ -1,30 +1,81 @@
-# RealESRGAN
+Dental X-ray Detection using YOLOv8 and ESRGAN
+This project presents a two-stage deep learning pipeline for dental radiograph analysis. It enhances dental X-ray image quality using Enhanced Super-Resolution GAN (ESRGAN) and then detects multiple dental conditions using a YOLOv8 object detection model.
 
-We have provided three models:
+🧠 Key Features
+Image Enhancement: Uses ESRGAN to improve the clarity and resolution of dental X-rays.
 
-1. realesrgan-x4plus  (default)
-2. realesrnet-x4plus
-3. esrgan-x4
+Object Detection: Employs YOLOv8 to detect and classify six dental conditions:
 
-Command:
+Caries
 
-1. ./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png
-2. ./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png -n realesrnet-x4plus
-3. ./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png -n
+Crown
 
-GitHub: https://github.com/xinntao/Real-ESRGAN/
-Paper: https://arxiv.org/abs/2107.10833
+Root Canal Treated (RCT)
 
-------------------------
+Restoration
 
-This executable file is **portable** and includes all the binaries and models required. No CUDA or PyTorch environment is needed.<br>
+Normal
 
-You can simply run the following command:
+Badly Decayed
 
-```bash
-./realesrgan-ncnn-vulkan.exe -i input.jpg -o output.png
-```
+Web Interface: Offers a simple frontend to upload and visualize predictions.
 
-Note that it may introduce block inconsistency (and also generate slightly different results from the PyTorch implementation), because this executable file first crops the input image into several tiles, and then processes them separately, finally stitches together.
+🗃️ Dataset
+Name: Dental Periapical X-rays
 
-This executable file is based on the wonderful [Tencent/ncnn](https://github.com/Tencent/ncnn) and [realsr-ncnn-vulkan](https://github.com/nihui/realsr-ncnn-vulkan) by [nihui](https://github.com/nihui).
+Source: Kaggle - Nada Aglan
+
+Format: JPEG images (640×640) with COCO annotations
+
+🧰 Methodology
+Stage 1: Super-Resolution Enhancement
+Model: ESRGAN
+
+Enhances detail and sharpens image features to improve detection accuracy.
+
+Stage 2: Object Detection
+Model: YOLOv8 (Ultralytics)
+
+Trained on enhanced images to identify dental conditions using bounding boxes.
+
+📊 Results
+
+Model	Accuracy (%)
+DenseNet-121	64
+YOLOv8 (mAP@0.5)	56.9
+Crown detection: mAP@0.5 = 95.2%
+
+Caries detection: mAP@0.5 = 17.4% (area for improvement)
+
+📈 Future Work
+Improve detection of subtle pathologies (e.g., early-stage caries)
+
+Integrate explainability tools (e.g., Eigen-CAM)
+
+Explore segmentation models like YOLO-DentSeg
+
+🛠️ Tech Stack
+Python, PyTorch, OpenCV
+
+Ultralytics YOLOv8
+
+ESRGAN (Enhanced Super-Resolution GAN)
+
+Albumentations for data augmentation
+
+🚀 Getting Started
+bash
+Copy
+Edit
+# Clone the repo
+git clone https://github.com/yourusername/dental-xray-yolov8-esrgan.git
+cd dental-xray-yolov8-esrgan
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run ESRGAN preprocessing (sample)
+python enhance_images.py
+
+# Train YOLOv8
+python train.py --img 640 --batch 16 --epochs 50 --data dental.yaml --weights yolov8n.pt
