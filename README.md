@@ -47,6 +47,10 @@ Crown detection: mAP@0.5 = 95.2%
 
 Caries detection: mAP@0.5 = 17.4% (area for improvement)
 
+![1](https://github.com/user-attachments/assets/1035066b-6d9a-4bfb-a370-6177cf87440f)
+
+![2](https://github.com/user-attachments/assets/7cb5d87b-b628-45ec-8057-62079fa1a19e)
+
 📈 Future Work
 Improve detection of subtle pathologies (e.g., early-stage caries)
 
