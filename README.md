@@ -68,7 +68,7 @@ bash
 Copy
 Edit
 # Clone the repo
-[git clone https://github.com/yourusername/dental-xray-yolov8-esrgan.git](https://github.com/prajwalBirwadkar/Dental-X-ray-Anomaly-Detection-System.git)
+git clone https://github.com/yourusername/dental-xray-yolov8-esrgan.git](https://github.com/prajwalBirwadkar/Dental-X-ray-Anomaly-Detection-System.git
 
 
 # Install dependencies
