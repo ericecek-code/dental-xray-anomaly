@@ -7,6 +7,8 @@ import uuid
 from werkzeug.utils import secure_filename
 from PIL import Image
 
+import os
+
 # Import YOLOv8 if installed, otherwise provide instructions
 try:
     from ultralytics import YOLO
@@ -15,6 +17,9 @@ except ImportError:
     YOLO_AVAILABLE = False
 
 app = Flask(__name__)
+
+# Use PORT from environment (Render) or default to 5000
+port = int(os.environ.get('PORT', 5000))
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ENHANCED_FOLDER'] = 'enhanced'
 app.config['DETECTED_FOLDER'] = 'detected'
@@ -164,4 +169,4 @@ def detected_file(filename):
     return send_file(os.path.join(app.config['DETECTED_FOLDER'], filename))
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(host='0.0.0.0', port=port, debug=False) 
