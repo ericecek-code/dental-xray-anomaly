@@ -1,0 +1,17 @@
+# Render Blueprint - Dental X-ray Anomaly Detection
+# https://render.com/docs/blueprints
+
+services:
+  - name: dental-xray-anomaly
+    type: web
+    env: python
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.10"
+      - key: MAX_CONTENT_LENGTH
+        value: "16777216"
+    autoDeploy: true
+    repoUrl: https://github.com/ericecek-code/dental-xray-anomaly
